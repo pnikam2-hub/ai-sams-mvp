@@ -10,16 +10,21 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'KIMI_API_KEY not configured' }, { status: 500 });
     }
 
+    // Provider is configurable: any OpenAI-compatible endpoint works
+    // (Moonshot, OpenRouter, DeepSeek, OpenAI).
+    const BASE_URL = (process.env.KIMI_BASE_URL || 'https://api.moonshot.cn/v1').replace(/\/$/, '');
+    const MODEL = process.env.KIMI_MODEL || 'moonshot-v1-128k';
+
     const rubricText = rubric ? JSON.stringify(rubric, null, 2) : 'No rubric provided';
 
-    const response = await fetch('https://api.moonshot.cn/v1/chat/completions', {
+    const response = await fetch(`${BASE_URL}/chat/completions`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${KIMI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: 'moonshot-v1-128k',
+        model: MODEL,
         messages: [
           {
             role: 'system',
@@ -66,7 +71,7 @@ export async function POST(req: NextRequest) {
     const supabase = createClientAdmin();
     await supabase.from('ai_score_suggestions').insert({
       answer_id: answerId,
-      model: 'kimi-moonshot-v1-128k',
+      model: MODEL,
       suggested_score: result.suggested_score,
       max_score: result.max_score,
       confidence: result.confidence,
