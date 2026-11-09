@@ -54,7 +54,7 @@ export function Navbar({ user }: NavbarProps) {
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
       <div className="flex h-14 items-center justify-between px-4 lg:px-6">
         <div className="flex items-center gap-3">
-          <Link href="/" className="hidden flex-col leading-none sm:inline-flex">
+          <Link href="/" className="flex flex-col leading-none lg:hidden">
             <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-primary">
               AI Native Organisations
             </span>
