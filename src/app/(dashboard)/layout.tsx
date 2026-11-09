@@ -71,9 +71,15 @@ export default async function DashboardLayout({
           {children}
         </main>
         <footer className="border-t px-4 py-2 lg:px-6 text-[11px] leading-tight text-muted-foreground">
-          Practice and self-assessment tool only. Not affiliated with, endorsed by, or recognised by
-          NCVET, MSDE, any Sector Skill Council, or any government body. No qualification or
-          certificate is issued.{' '}
+          AI Skills Practice, a practice tool from{' '}
+          <a
+            href="https://ainativeorganisations.com"
+            className="underline underline-offset-2 hover:text-foreground"
+          >
+            AI Native Organisations
+          </a>
+          . Not affiliated with, endorsed by, or recognised by NCVET, MSDE, any Sector Skill Council,
+          or any government body. No qualification or certificate is issued.{' '}
           <Link href="/disclaimer" className="underline underline-offset-2 hover:text-foreground">
             Disclaimer
           </Link>

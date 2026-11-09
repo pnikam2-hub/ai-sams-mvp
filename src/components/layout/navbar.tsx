@@ -11,6 +11,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { LogOut } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { createClientBrowser } from '@/lib/supabase';
 import { toast } from 'sonner';
@@ -52,9 +53,18 @@ export function Navbar({ user }: NavbarProps) {
   return (
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
       <div className="flex h-14 items-center justify-between px-4 lg:px-6">
-        <div className="flex items-center gap-2">
-          <span className="font-semibold text-lg hidden sm:inline">AI-SAMS</span>
-          <span className="text-muted-foreground text-sm">| Practice &amp; mock exams</span>
+        <div className="flex items-center gap-3">
+          <Link href="/" className="hidden flex-col leading-none sm:inline-flex">
+            <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-primary">
+              AI Native Organisations
+            </span>
+            <span
+              className="text-base font-semibold tracking-tight"
+              style={{ fontFamily: 'var(--font-serif)' }}
+            >
+              AI Skills Practice
+            </span>
+          </Link>
         </div>
 
         <DropdownMenu>

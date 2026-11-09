@@ -14,12 +14,13 @@ export function PracticeNotice({
 }) {
   return (
     <div
-      className={`rounded-md border border-amber-200 bg-amber-50/70 px-3 py-2 text-xs text-amber-900 ${className}`}
+      className={`rounded-sm border border-[#e6d8b8] bg-[#fdfaf2] px-3 py-2 text-xs text-[#5d4416] ${className}`}
     >
       <span className="inline-flex items-start gap-2">
         <Info className="mt-0.5 h-4 w-4 shrink-0" />
         <span>
-          <strong>Practice report — not a qualification.</strong> AI-SAMS is an independent
+          <strong>Practice report — not a qualification.</strong> AI Skills Practice is an
+          independent
           practice and self-assessment tool. It is not affiliated with, endorsed by, or recognised
           by NCVET, MSDE, any Sector Skill Council, or any government body, and issues no
           certificate or credit.

@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Wordmark } from '@/components/brand';
 import { Toaster } from '@/components/ui/sonner';
 
 export const metadata: Metadata = {
-  title: 'AI-SAMS Candidate Portal',
-  description: 'AI Skill Assessment Management System - Candidate Portal',
+  title: 'AI Skills Practice — Candidate Portal',
+  description: 'Practice and readiness assessment for AI skills — candidate portal.',
 };
 
 export default function CandidateLayout({
@@ -13,21 +15,21 @@ export default function CandidateLayout({
 }) {
   return (
     <div className="min-h-full flex flex-col">
-      <header className="border-b bg-white dark:bg-slate-900 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">AI</span>
-            </div>
-            <span className="font-semibold text-sm hidden sm:inline">AI-SAMS</span>
-            <span className="text-slate-400 mx-2">|</span>
-            <span className="text-sm text-slate-600 dark:text-slate-400">Candidate Portal</span>
-          </div>
+      <header className="sticky top-0 z-50 border-b bg-background">
+        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+          <Wordmark href="/candidate" size="sm" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Candidate portal
+          </span>
         </div>
       </header>
       <main className="flex-1">{children}</main>
-      <footer className="border-t py-4 text-center text-xs text-slate-500">
-        AI-SAMS v1.0 - AI Skill Assessment Management System
+      <footer className="border-t py-5 text-center text-xs text-muted-foreground">
+        AI Skills Practice, a practice tool from AI Native Organisations. No qualification or
+        certificate is issued.{' '}
+        <Link href="/disclaimer" className="underline underline-offset-2 hover:text-primary">
+          Disclaimer
+        </Link>
       </footer>
       <Toaster position="top-right" />
     </div>

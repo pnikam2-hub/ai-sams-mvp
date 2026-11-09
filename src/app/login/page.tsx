@@ -9,8 +9,9 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
-import { Brain, Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff } from 'lucide-react';
 import { PracticeNotice } from '@/components/practice-notice';
+import { Wordmark, BrandLine } from '@/components/brand';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -81,23 +82,56 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100 p-4">
-      <div className="w-full max-w-md space-y-6">
-        <div className="text-center space-y-2">
-          <div className="flex items-center justify-center gap-2">
-            <Brain className="h-10 w-10 text-primary" />
-            <h1 className="text-3xl font-bold tracking-tight">AI-SAMS</h1>
-          </div>
-          <p className="text-muted-foreground">Practice and readiness assessment</p>
-          <Badge variant="secondary">Practice &amp; mock exams</Badge>
+    <div className="min-h-screen bg-background lg:grid lg:grid-cols-2">
+      {/* Editorial panel */}
+      <section className="hidden flex-col justify-between border-r border-border bg-[#f7f6f1] px-14 py-12 lg:flex">
+        <Wordmark href="/login" size="lg" />
+
+        <div className="max-w-lg">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Practice and readiness
+          </p>
+          <h1 className="mt-5 text-5xl leading-[1.08]">
+            Rehearse the assessment before it counts.
+          </h1>
+          <p className="mt-6 text-[15px] leading-relaxed text-muted-foreground">
+            Mock papers, scenario questions and rubric-scored practical work, modelled on publicly
+            available qualification frameworks. You get a practice report showing the competency
+            areas that need work — not a certificate.
+          </p>
+          <ul className="mt-8 space-y-3 text-sm">
+            {[
+              'MCQ, scenario and practical sections in one sitting',
+              'Rubric-based scoring, reviewed by an assessor',
+              'A practice report you can act on before the real thing',
+            ].map((line) => (
+              <li key={line} className="flex items-start gap-3">
+                <span className="mt-[7px] block h-[2px] w-5 shrink-0 bg-[#c5a059]" />
+                <span className="text-foreground/80">{line}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
+        <BrandLine className="max-w-sm" />
+      </section>
+
+      {/* Sign-in panel */}
+      <section className="flex min-h-screen items-center justify-center px-6 py-12">
+        <div className="w-full max-w-md space-y-6">
+          <div className="lg:hidden">
+            <Wordmark href="/login" size="md" />
+          </div>
+
+          <div>
+            <h2 className="text-2xl">Sign in</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Training centre, assessor or candidate account
+            </p>
+          </div>
+
         <Card>
-          <CardHeader>
-            <CardTitle>Sign In</CardTitle>
-            <CardDescription>Enter your credentials</CardDescription>
-          </CardHeader>
-          <CardContent>
+          <CardContent className="pt-4">
             <form onSubmit={handleLogin} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
@@ -119,9 +153,11 @@ export default function LoginPage() {
           </CardContent>
         </Card>
 
-        <Card className="border-dashed">
+        <Card className="border-dashed bg-transparent">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium text-muted-foreground">Demo Accounts (Click to auto-fill)</CardTitle>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+              Demo accounts · click to auto-fill
+            </p>
             <CardDescription className="text-xs">
               Demonstration dataset only — remove before use with real candidates.
             </CardDescription>
@@ -141,8 +177,10 @@ export default function LoginPage() {
           </CardContent>
         </Card>
 
-        <PracticeNotice />
-      </div>
+          <PracticeNotice />
+          <BrandLine className="text-center lg:hidden" />
+        </div>
+      </section>
     </div>
   );
 }

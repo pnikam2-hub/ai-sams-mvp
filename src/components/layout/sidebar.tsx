@@ -7,6 +7,7 @@ import { Separator } from '@/components/ui/separator';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { Wordmark } from '@/components/brand';
 import {
   LayoutDashboard,
   Building2,
@@ -72,11 +73,8 @@ export function Sidebar({ userRole = 'super_admin' }: SidebarProps) {
 
   const NavContent = () => (
     <>
-      <div className="flex h-16 items-center gap-2 px-4 border-b lg:h-[60px] lg:px-6">
-        <Shield className="h-6 w-6 text-primary" />
-        <Link href={homeHref} className="font-bold text-lg tracking-tight">
-          AI-SAMS
-        </Link>
+      <div className="flex h-16 items-center gap-2 border-b px-4 lg:h-[60px] lg:px-6">
+        <Wordmark href={homeHref} size="sm" />
       </div>
       <ScrollArea className="flex-1 py-2">
         <nav className="grid gap-1 px-2">
@@ -116,8 +114,16 @@ export function Sidebar({ userRole = 'super_admin' }: SidebarProps) {
             <NavContent />
           </SheetContent>
         </Sheet>
-        <Link href={homeHref} className="font-bold text-lg tracking-tight">
-          AI-SAMS
+        <Link href={homeHref} className="flex flex-col leading-none">
+          <span className="text-[9px] font-semibold uppercase tracking-[0.18em] text-primary">
+            AI Native Organisations
+          </span>
+          <span
+            className="text-lg font-semibold tracking-tight"
+            style={{ fontFamily: 'var(--font-serif)' }}
+          >
+            AI Skills Practice
+          </span>
         </Link>
       </div>
 

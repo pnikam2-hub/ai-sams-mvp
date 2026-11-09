@@ -2,46 +2,48 @@ import Link from 'next/link';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { AlertTriangle, ArrowLeft } from 'lucide-react';
+import { Wordmark } from '@/components/brand';
 
 export const metadata = {
-  title: 'Disclaimer — AI-SAMS Practice Assessment',
+  title: 'Disclaimer — AI Skills Practice',
   description:
-    'AI-SAMS is an independent practice and readiness assessment tool. It is not affiliated with, endorsed by, or recognised by any government body or Sector Skill Council.',
+    'AI Skills Practice is an independent practice and readiness assessment tool. It is not affiliated with, endorsed by, or recognised by any government body or Sector Skill Council.',
 };
 
 export default function DisclaimerPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 px-4 py-10">
+    <div className="min-h-screen bg-background px-4 py-10">
       <div className="mx-auto max-w-3xl space-y-6">
-        <Link
-          href="/login"
-          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
-        >
-          <ArrowLeft className="h-4 w-4" /> Back to sign in
-        </Link>
+        <div className="flex items-center justify-between">
+          <Wordmark href="/login" size="md" />
+          <Link
+            href="/login"
+            className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground"
+          >
+            <ArrowLeft className="h-4 w-4" /> Back to sign in
+          </Link>
+        </div>
 
         <div>
-          <Badge variant="outline" className="mb-3">
+          <Badge variant="outline" className="mb-3 border-primary/30 text-primary">
             Independent practice tool
           </Badge>
-          <h1 className="text-3xl font-bold tracking-tight text-slate-900">
-            Disclaimer and scope of use
-          </h1>
-          <p className="mt-2 text-sm text-slate-600">
-            Please read this before using AI-SAMS or relying on any score it produces.
+          <h1 className="text-4xl tracking-tight">Disclaimer and scope of use</h1>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Please read this before using AI Skills Practice or relying on any score it produces.
           </p>
         </div>
 
-        <Card className="border-amber-200 bg-amber-50/60">
+        <Card className="border-[#e6d8b8] bg-[#fdfaf2]">
           <CardHeader className="pb-2">
-            <CardTitle className="flex items-center gap-2 text-base text-amber-900">
+            <CardTitle className="flex items-center gap-2 text-base text-[#7a4f0d]">
               <AlertTriangle className="h-5 w-5" />
               Not an official assessment
             </CardTitle>
           </CardHeader>
-          <CardContent className="space-y-2 text-sm text-amber-900">
+          <CardContent className="space-y-2 text-sm text-[#5d4416]">
             <p>
-              AI-SAMS is an independent practice and readiness tool. It is{' '}
+              AI Skills Practice is an independent practice and readiness tool. It is{' '}
               <strong>
                 not affiliated with, endorsed by, sponsored by, or recognised by
               </strong>{' '}
@@ -114,7 +116,8 @@ export default function DisclaimerPage() {
         </Card>
 
         <p className="pb-4 text-center text-xs text-muted-foreground">
-          AI-SAMS — practice and readiness assessment. No qualification or certificate is issued.
+          AI Skills Practice — a practice tool from AI Native Organisations. No qualification or
+          certificate is issued.
         </p>
       </div>
     </div>
