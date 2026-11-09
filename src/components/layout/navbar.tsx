@@ -54,7 +54,7 @@ export function Navbar({ user }: NavbarProps) {
       <div className="flex h-14 items-center justify-between px-4 lg:px-6">
         <div className="flex items-center gap-2">
           <span className="font-semibold text-lg hidden sm:inline">AI-SAMS</span>
-          <span className="text-muted-foreground text-sm">| Pilot MVP</span>
+          <span className="text-muted-foreground text-sm">| Practice &amp; mock exams</span>
         </div>
 
         <DropdownMenu>

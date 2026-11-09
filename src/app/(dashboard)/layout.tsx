@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers';
+import Link from 'next/link';
 import { createServerClient } from '@supabase/ssr';
 import { redirect } from 'next/navigation';
 import { Sidebar } from '@/components/layout/sidebar';
@@ -69,6 +70,14 @@ export default async function DashboardLayout({
         <main className="flex-1 p-4 lg:p-6 bg-muted/20 overflow-auto">
           {children}
         </main>
+        <footer className="border-t px-4 py-2 lg:px-6 text-[11px] leading-tight text-muted-foreground">
+          Practice and self-assessment tool only. Not affiliated with, endorsed by, or recognised by
+          NCVET, MSDE, any Sector Skill Council, or any government body. No qualification or
+          certificate is issued.{' '}
+          <Link href="/disclaimer" className="underline underline-offset-2 hover:text-foreground">
+            Disclaimer
+          </Link>
+        </footer>
       </div>
     </div>
   );
