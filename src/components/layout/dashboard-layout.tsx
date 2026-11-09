@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
+import Link from 'next/link';
 import { createClientBrowser } from '@/lib/supabase';
 import { Sidebar } from './sidebar';
 import { Navbar } from './navbar';
@@ -93,6 +94,16 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
         <main className="flex-1 p-4 lg:p-6 bg-muted/20 overflow-auto">
           {children}
         </main>
+        <footer className="border-t px-4 py-2 lg:px-6 text-[11px] leading-tight text-muted-foreground">
+          <span>
+            Practice and self-assessment tool only. Not affiliated with, endorsed by, or recognised
+            by NCVET, MSDE, any Sector Skill Council, or any government body. No qualification or
+            certificate is issued.{' '}
+            <Link href="/disclaimer" className="underline underline-offset-2 hover:text-foreground">
+              Disclaimer
+            </Link>
+          </span>
+        </footer>
       </div>
     </div>
   );

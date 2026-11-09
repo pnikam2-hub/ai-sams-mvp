@@ -10,6 +10,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { toast } from 'sonner';
 import { Brain, Eye, EyeOff } from 'lucide-react';
+import { PracticeNotice } from '@/components/practice-notice';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -87,8 +88,8 @@ export default function LoginPage() {
             <Brain className="h-10 w-10 text-primary" />
             <h1 className="text-3xl font-bold tracking-tight">AI-SAMS</h1>
           </div>
-          <p className="text-muted-foreground">AI Skill Assessment Management System</p>
-          <Badge variant="secondary">Pilot MVP</Badge>
+          <p className="text-muted-foreground">Practice and readiness assessment</p>
+          <Badge variant="secondary">Practice &amp; mock exams</Badge>
         </div>
 
         <Card>
@@ -121,6 +122,9 @@ export default function LoginPage() {
         <Card className="border-dashed">
           <CardHeader className="pb-3">
             <CardTitle className="text-sm font-medium text-muted-foreground">Demo Accounts (Click to auto-fill)</CardTitle>
+            <CardDescription className="text-xs">
+              Demonstration dataset only — remove before use with real candidates.
+            </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
@@ -137,7 +141,7 @@ export default function LoginPage() {
           </CardContent>
         </Card>
 
-        <p className="text-center text-xs text-muted-foreground">Pilot Assessment Tool — Not for Official Certification</p>
+        <PracticeNotice />
       </div>
     </div>
   );

@@ -7,8 +7,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "AI-SAMS - AI Skill Assessment Management System",
-  description: "Pilot assessment tool for AI skill training centres",
+  title: 'AI-SAMS — Practice and Readiness Assessment',
+  description:
+    'Practice mock exams and self-assessments modelled on publicly available qualification frameworks. An independent tool — not affiliated with or recognised by any government body or Sector Skill Council.',
 };
 
 export default function RootLayout({

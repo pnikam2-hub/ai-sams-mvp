@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
+import { PracticeNotice } from '@/components/practice-notice';
 import { toast } from 'sonner';
 import {
   Award,
@@ -297,7 +298,12 @@ export default function ScorecardPage() {
         <p className="text-sm text-slate-500 mt-1">
           Submitted on {attempt.submitted_at ? new Date(attempt.submitted_at).toLocaleString() : 'N/A'}
         </p>
+        <p className="text-xs font-medium uppercase tracking-wide text-slate-400 mt-2">
+          Practice report
+        </p>
       </div>
+
+      <PracticeNotice />
 
       {isPending ? (
         /* Pending scoring state */
@@ -567,6 +573,11 @@ export default function ScorecardPage() {
           Back to Dashboard
         </Button>
       </div>
+
+      <p className="pb-8 text-center text-xs text-slate-400">
+        This is a practice report for your own feedback. It is not a certificate, qualification or
+        statement of competency, and has no standing in any official assessment.
+      </p>
     </div>
   );
 }

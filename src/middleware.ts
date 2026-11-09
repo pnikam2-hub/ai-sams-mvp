@@ -8,7 +8,7 @@ const ROLE_ROUTES: Record<string, string[]> = {
   candidate: ['/candidate', '/api/candidate'],
 };
 
-const PUBLIC_ROUTES = ['/login', '/register', '/api/auth', '/_next', '/favicon.ico'];
+const PUBLIC_ROUTES = ['/login', '/register', '/disclaimer', '/api/auth', '/_next', '/favicon.ico'];
 
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
