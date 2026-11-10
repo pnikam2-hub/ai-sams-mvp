@@ -10,6 +10,29 @@ const ROLE_ROUTES: Record<string, string[]> = {
 
 const PUBLIC_ROUTES = ['/login', '/register', '/disclaimer', '/api/auth', '/_next', '/favicon.ico'];
 
+/**
+ * Absolute origin for redirects.
+ *
+ * `request.url` is NOT usable here: behind a reverse proxy the Next server builds
+ * it from its own bind host, so redirects leak `http://localhost:3100` to the
+ * browser. Prefer the forwarded host, then NEXT_PUBLIC_APP_URL, then the request.
+ */
+function siteOrigin(request: NextRequest): string {
+  const host = request.headers.get('x-forwarded-host') ?? request.headers.get('host');
+  const proto =
+    request.headers.get('x-forwarded-proto') ??
+    (request.nextUrl.protocol ? request.nextUrl.protocol.replace(':', '') : 'https');
+
+  if (host && !/^(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?$/.test(host)) {
+    return `${proto}://${host}`;
+  }
+
+  const configured = process.env.NEXT_PUBLIC_APP_URL?.trim().replace(/\/+$/, '');
+  if (configured) return configured;
+
+  return `${proto}://${host ?? 'localhost:3000'}`;
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -67,7 +90,7 @@ export async function middleware(request: NextRequest) {
 
   if (sessionError || !session) {
     // Redirect unauthenticated users to login
-    const loginUrl = new URL('/login', request.url);
+    const loginUrl = new URL('/login', siteOrigin(request));
     loginUrl.searchParams.set('redirect', pathname);
     return NextResponse.redirect(loginUrl);
   }
@@ -80,7 +103,7 @@ export async function middleware(request: NextRequest) {
     .single();
 
   if (userError || !userData) {
-    const loginUrl = new URL('/login', request.url);
+    const loginUrl = new URL('/login', siteOrigin(request));
     return NextResponse.redirect(loginUrl);
   }
 
@@ -99,7 +122,7 @@ export async function middleware(request: NextRequest) {
       candidate: '/candidate',
     };
     const redirectUrl = dashboardMap[userRole] || '/login';
-    return NextResponse.redirect(new URL(redirectUrl, request.url));
+    return NextResponse.redirect(new URL(redirectUrl, siteOrigin(request)));
   }
 
   return response;
